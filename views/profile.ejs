@@ -1,31 +1,177 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= job %> : CareerSail</title>
+    <title><%=job%> : CareerSail</title>
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css' />
   </head>
   <body>
-  <nav>
-    <div class="nav-wrapper">
-      <a href="#" class="brand-logo">CareerSail</a>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
-      <form>
-         <div class="input-field">
-           <input id="search" type="search" required>
-           <label for="search"><i class="material-icons">search</i></label>
-           <i class="material-icons">close</i>
-         </div>
-       </form>
-      </ul>
-    </div>
-  </nav>
-    <h3 class = "center"><%= job %></h3>
+    <nav class="blue lighten-2">
+      <div class="nav-wrapper">
+        <a href="../" class="brand-logo" style = "padding-left:1em;">CareerSail</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+        </ul>
+      </div>
+    </nav>
+    <b><h1 class = "center"><%=job %></h1></b>
     <h4 class="center">
-      Average Salary: <strong><span id="avgSal"></span></strong>
+      Average Salary: <strong><span id="avgSal">$5,000,000</span></strong>
     </h4>
+    <div class="row">
+      <p style="font-size:20px;" class="center">
+The National Basketball Association (NBA) is the pre-eminent men's professional basketball league in North America, and is widely considered to be the premier ..
+      </p>
+    </div>
+    <div class="row">
+      <div class="col s12 m6">
+        <div class="container">
+          <h3 class = "center">Statistics</h3>
+          <ul>
+            <li>Average Salary: <b>$5,000,000</b></li>
+            <li>Projected Growth: <b>17%</b></li>
+            <li>Average Company Approval: <b>N/A</b></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col s12 m6">
+        <div class="container">
+          <h3 class="center">Recommended Videos</h3>
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/620oPZSaufk" frameborder="0" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+      <div class="row">
+        <div class="col s12 m6">
+          <div class="container">
+            <h3 class = "center">Best Colleges for <b><%=job%></b></h3>
+            <p class="center">
+              Displaying highest scoring college teams.
+            </p>
+            <ul>
+              <li>UKentucky</li>
+              <li>Kansas</li>
+              <li>Duke</li>
+            </ul>
+          </div>
+        </div>
+        <div class="col s12 m6">
+          <div class="container">
+            <h3>What People In the Job Say</h3>
+            <p>
+              (None so Far)
+            </p>
+            <a href="#" class="btn blue lighten-2">Submit A Testimony</a>
+          </div>
+        </div>
+      <!-- </div> -->
+    </div>
+    <ul>
+    </ul>
+    <footer class ="blue lighten-2 page-footer z-depth-1">
+       <div class = "container">
+          <div class = "row">
+             <div class = "col s12 m6 white-text">
+                <h4>About CareerSail</h4>
+                <p>CareerSail is a platform that lists information about careers that would otherwise be difficult to find otherwise.</p>
+             </div>
+             <div class = "col s12 m6 white-text">
+                <h4>Pages</h4>
+                <ul>
+                   <li><a href="/" class = "white-text">Homepage</a></li>
+                   <li><a href="/demo/" class = "white-text">Demo</a></li>
+                </ul>
+             </div>
+          </div>
+       </div>
+       <div class = "footer-copyright ">
+          <div class = "container blue-text">
+             &copy; Class of 2019 Sharks
+          </div>
+       </div>
+    </footer>
+    <script type="text/javascript" src = "/javascripts/jquery-3.1.0.min.js"></script>
+  	<script type="text/javascript" src = "/javascripts/typed.js"></script>
+  	<script type="text/javascript" src = "/js/materialize.min.js"></script>
     <script type="text/javascript">
-      var job = <%=job%>;
-      
+      var job = "<%=job%>";
+      $("#avgsal").text("$80,000");
+      /*
+        @description:  Gets lists of jobs and then process them to get an array of three jobs.
+      */
+      function getIndeedResponse(query){
+        var xhttp = new XMLHttpRequest();
+          if ("withCredentials" in xhttp) {
+        xhttp.onreadystatechange = function() {
+          if (this.readyState == 4 && this.status == 200) {
+            var xmlDoc = this.responseXML;
+            var x = xmlDoc.getElementsByTagName('results')[0];
+            var y = x.childNodes[0];
+            console.log(y.nodeValue);
+            // var results = xmlDocument.getElementsByTagName("RESULTS");
+            // console.log(results);
+            // var result = results.getElementsByTagName("RESULT");
+            // console.log(result);
+            // firstResult= results.getElementsByTagName("RESULT")[0];
+            // secondResult= results.getElementsByTagName("RESULT")[1];
+            // thirdResult = results.getElementsByTagName("RESULTS")[2];
+            //
+            // firstResultJobTitle = firstResult.getElementsByTagName("JOBTITLE");
+            // secondResultJobTitle = secondResult.getElementsByTagName("JOBTITLE");
+            // thirdResultJobTitle = thirdResult.getElementsByTagName("JOBTITLE");
+            //
+            // firstResultCompanyName = firstResult.getElementsByTagName("COMPANY");
+            // secondResultCompanyName = secondResult.getElementsByTagName("COMPANY");
+            // thirdResultCompanyName = thirdResult.getElementsByTagName("COMPANY");
+            //
+            // firstResultJobLocation = firstResult.getElementsByTagName("FORMATTEDLOCATION");
+            // secondResultJobLocation = secondResult.getElementsByTagName("FORMATTEDLOCATION");
+            // thirdResultJobLocation = thirdResult.getElementsByTagName("FORMATTEDLOCATION");
+            //
+            // $("#firstResultJobTitle").text(firstResultJobTitle);
+            // $("#secondResultJobTitle").text(secondResultJobTitle);
+            // $("#thirdResultJobTitle").text(thirdResultJobTitle);
+          }
+      }
+        };
+        url = "http://api.indeed.com/ads/apisearch?publisher=1924613555777752&q="+String(query)+"&v=2";
+        console.log(url)
+        xhttp.open("GET", url, true);
+        xhttp.send();
+      }
+      /*
+        @description: Get the info we want and put it in an HTML file
+      */
+      function processResponse(xml){
+        var xmlDocument = xml.responseXML;
+        console.log(xmlDocument);
+        $xmlThingy = $(xmlDocument);
+        console.log($xml.find("result"))
+        var items = [];
+        // var results = xmlDocument.getElementsByTagName("RESULTS");
+        // firstResult= results.getElementsByTagName("RESULT")[0];
+        // secondResult= results.getElementsByTagName("RESULT")[1];
+        // thirdResult = results.getElementsByTagName("RESULTS")[2];
+        //
+        // firstResultJobTitle = firstResult.getElementsByTagName("JOBTITLE");
+        // secondResultJobTitle = secondResult.getElementsByTagName("JOBTITLE");
+        // thirdResultJobTitle = thirdResult.getElementsByTagName("JOBTITLE");
+        //
+        // firstResultCompanyName = firstResult.getElementsByTagName("COMPANY");
+        // secondResultCompanyName = secondResult.getElementsByTagName("COMPANY");
+        // thirdResultCompanyName = thirdResult.getElementsByTagName("COMPANY");
+        //
+        // firstResultJobLocation = firstResult.getElementsByTagName("FORMATTEDLOCATION");
+        // secondResultJobLocation = secondResult.getElementsByTagName("FORMATTEDLOCATION");
+        // thirdResultJobLocation = thirdResult.getElementsByTagName("FORMATTEDLOCATION");
+        //
+        // $("#firstResultJobTitle").text(firstResultJobTitle);
+        // $("#secondResultJobTitle").text(secondResultJobTitle);
+        // $("#thirdResultJobTitle").text(thirdResultJobTitle);
+        // var xml = "<rss version='2.0'><channel><title>RSS Title</title></channel></rss>",
+        //   xmlDoc = $.parseXML( xml ),
+        //   $xml = $( xmlDoc ),
+        //   $title = $xml.find( "title" );
+      }
+      getIndeedResponse("<%=job%>");
       </script>
   </body>
 </html>
