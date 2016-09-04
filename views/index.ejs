@@ -1,11 +1,24 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <title>CareerSail</title>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css' />
   </head>
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+	<div class="valign-wrapper blue lighten-2">
+	<div class="valign">
+		<h3 class="center">CareerSail</h3>
+		<h4 class="center">Sail the Seas of <span id="typed"></span></h4>
+		<form class = "">
+		  <div center class="input-field">
+		    <input id="search" type="search" required>
+		    <label for="search"><i class="material-icons">search</i></label>
+		    <i class="material-icons">close</i>
+		  </div>
+		</form>	
+	</div>
+	</div>    
+	<script type="text/javascript" src = "../public/javascripts/typed.js"></script>
+	<script type="text/javascript" src = "../public/javascripts/custom.js"></script>
   </body>
 </html>

@@ -19,7 +19,13 @@
       </ul>
     </div>
   </nav>
-    <h1 class = "center"><%= job %></h1>
-    <p>Welcome to <%= job %></p>
+    <h3 class = "center"><%= job %></h3>
+    <h4 class="center">
+      Average Salary: <strong><span id="avgSal"></span></strong>
+    </h4>
+    <script type="text/javascript">
+      var job = <%=job%>;
+      
+      </script>
   </body>
 </html>
